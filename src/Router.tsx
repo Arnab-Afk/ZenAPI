@@ -9,6 +9,8 @@ import Dashboard from './views/Dashboard';
 import Login from './views/Login';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './contexts/AuthContext';
+import CreateAccount from './components/ui/create-account';
+import Zen from './components/ui/zen';
 
 const AppRouter: React.FC = () => {
   return (
@@ -17,7 +19,7 @@ const AppRouter: React.FC = () => {
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Dashboard />} />
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<Zen />} />
             <Route element={<PrivateRoute />}>
               {/* <Route path="monitoring" element={<Monitoring />} />
               <Route path="security" element={<Security />} />

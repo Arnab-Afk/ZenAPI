@@ -24,7 +24,7 @@ export const theme = {
     },
   },
 };
-export const plugins = [addVariablesForColors];
+export const plugins = [addVariablesForColors, addVariablesForColors];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
@@ -36,3 +36,5 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
+
+addVariablesForColors
