@@ -2,8 +2,6 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components.ui/label";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 
@@ -20,15 +18,19 @@ declare global {
 
 export function CreateAccount() {
   const handleGoogleClick = async () => {
-    const redirectUrl = encodeURIComponent('http://localhost:3000/callback');
-    const googleAuthUrl = `https://small-mouse-2759.arnabbhowmik019.workers.dev/google/auth?redirect_url=${redirectUrl}`;
-    
-    if (window.electron?.shell) {
-      // Open in system default browser using Electron
-      await window.electron.shell.openExternal(googleAuthUrl);
-    } else {
-      // Fallback for non-Electron environments
-      window.location.href = googleAuthUrl;
+    try {
+      const redirectUrl = encodeURIComponent('http://localhost:3000/callback');
+      const googleAuthUrl = `https://small-mouse-2759.arnabbhowmik019.workers.dev/google/auth?redirect_url=${redirectUrl}`;
+      
+      if (window.electron?.shell) {
+        // Open in system's default browser using Electron
+        await window.electron.shell.openExternal(googleAuthUrl);
+      } else {
+        // Fallback for non-Electron environments
+        window.location.href = googleAuthUrl;
+      }
+    } catch (error) {
+      console.error('Failed to open URL in external browser:', error);
     }
   };
 
